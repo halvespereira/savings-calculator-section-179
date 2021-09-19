@@ -10,55 +10,61 @@
   </head>
   <body>
     <div class="__calculator-container">
-      <div class="__calculator-title-container">
+      <div class="__calculator-title">
         <h2>Section 179 Savings Calculator</h2>
         <p>See how much money you may save by taking advantage of the Section 179 Tax Deduction.</p>
       </div>
       <div class="__calculator-dropdown">
-        <span>$80,000</span>
-        <select name="tax-rate-select" id="calculator-tax-rate">
-          <option value=".1">10%</option>
-          <option value=".12">12%</option>
-          <option value=".21">21%</option>
-          <option value=".22">22%</option>
-          <option value=".24">24%</option>
-          <option value=".32">32%</option>
-          <option value=".35">35%</option>
-          <option value=".37">37%</option>
-        </select>
+        <p id="__calculator-top-value">$10,000</p>
+        <div class="__calculator-dropdown-wrapper">
+          <span id="__calculator-select-tax-rate">Select Tax Rate</span>
+          <select name="tax-rate-select" id="__calculator-tax-rate-dropdown">
+            <option value=".1">10%</option>
+            <option value=".12">12%</option>
+            <option value=".21">21%</option>
+            <option value=".22">22%</option>
+            <option value=".24">24%</option>
+            <option value=".32">32%</option>
+            <option value=".35">35%</option>
+            <option value=".37">37%</option>
+          </select>
+        </div>
       </div>
       <div class="__calculator-slider">
         <div>
           <h5>Slide to Select Equipment Cost $ Amount</h5>
-          <input
-            min="10000"
-            max="2500000"
-            step="10000"
-            value="80000"
-            type="range"
-            id="calculator-range"
-          />
+          <div>
+            <input
+              class="__calculator-range"
+              min="10000"
+              max="2500000"
+              step="10000"
+              value="10000"
+              type="range"
+              id="calculator-range"
+            />
+          </div>
         </div>
-        <div>
+        <div class="__calculator-range-amounts">
           <span>$10k</span>
           <span>$2.5M</span>
         </div>
       </div>
       <div class="__calculator-response">
-        <div>
+        <div class="__calculator-response-box-1 __calculator-response-box">
           <h3>Section 179 Deduction</h3>
           <p>Up to $1M</p>
-          <div>$10,000</div>
+          <div id="__calculator-response-179-deduction">$10,000</div>
         </div>
-        <div>
+        <div class="__calculator-response-box-2 __calculator-response-box">
           <h3>Cost of Equipment</h3>
           <p>After Tax Savings</p>
-          <div>$6,500</div>
+          <div id="__calculator-response-cost-of-equipment">$9,000</div>
         </div>
-        <div>
+        <div class="__calculator-response-box-3 __calculator-response-box">
           <h3>Cash Savings</h3>
           <p>At 10% tax bracket</p>
-          <div>$1,000</div>
+          <div id="__calculator-response-cash-savings">$1,000</div>
         </div>
       </div>
       <div class="__calculator-bottom-text">
@@ -69,7 +75,9 @@
         </p>
       </div>
       <div class="__calculator-action-button">
-        <button>Request a Quote</button>
+        <a href="https://www.1stcommercialcredit.com/contact/buyers" target="_blank"
+          >Request a Quote</a
+        >
       </div>
     </div>
   </body>
