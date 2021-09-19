@@ -417,13 +417,13 @@
 
   .__calculator-range-amount-start {
     position: absolute;
-    left: 30px;
+    left: 40px;
     bottom: -5px;
   }
 
   .__calculator-range-amount-end {
     position: absolute;
-    right: 30px;
+    right: 40px;
     bottom: -5px;
   }
 
