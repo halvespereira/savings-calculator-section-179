@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculator</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script src="scripts.js" defer></script>
+  </head>
+  <body>
+    <div class="__calculator-container">
+      <div class="__calculator-title-container">
+        <h2>Section 179 Savings Calculator</h2>
+        <p>See how much money you may save by taking advantage of the Section 179 Tax Deduction.</p>
+      </div>
+      <div class="__calculator-dropdown">
+        <span>$80,000</span>
+        <select name="tax-rate-select" id="calculator-tax-rate">
+          <option value=".1">10%</option>
+          <option value=".12">12%</option>
+          <option value=".21">21%</option>
+          <option value=".22">22%</option>
+          <option value=".24">24%</option>
+          <option value=".32">32%</option>
+          <option value=".35">35%</option>
+          <option value=".37">37%</option>
+        </select>
+      </div>
+      <div class="__calculator-slider">
+        <div>
+          <h5>Slide to Select Equipment Cost $ Amount</h5>
+          <input
+            min="10000"
+            max="2500000"
+            step="10000"
+            value="80000"
+            type="range"
+            id="calculator-range"
+          />
+        </div>
+        <div>
+          <span>$10k</span>
+          <span>$2.5M</span>
+        </div>
+      </div>
+      <div class="__calculator-response">
+        <div>
+          <h3>Section 179 Deduction</h3>
+          <p>Up to $1M</p>
+          <div>$10,000</div>
+        </div>
+        <div>
+          <h3>Cost of Equipment</h3>
+          <p>After Tax Savings</p>
+          <div>$6,500</div>
+        </div>
+        <div>
+          <h3>Cash Savings</h3>
+          <p>At 10% tax bracket</p>
+          <div>$1,000</div>
+        </div>
+      </div>
+      <div class="__calculator-bottom-text">
+        <p>
+          This calculator is intended to provide a potential tax scenario that may not apply to your
+          business. Consult your tax professional to determine tax implications and benefits for
+          your business.
+        </p>
+      </div>
+      <div class="__calculator-action-button">
+        <button>Request a Quote</button>
+      </div>
+    </div>
+  </body>
+</html>
