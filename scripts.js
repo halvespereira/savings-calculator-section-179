@@ -1,11 +1,14 @@
+// grabbing all the DOM elements
 const calculatorTopValue = document.querySelector("#__calculator-top-value");
 const slider = document.querySelector(".__calculator-range");
 const section179Deduction = document.querySelector("#__calculator-response-179-deduction");
 const taxRateDropdown = document.querySelector("#__calculator-tax-rate-dropdown");
 const costOfEquipment = document.querySelector("#__calculator-response-cost-of-equipment");
 const cashSavings = document.querySelector("#__calculator-response-cash-savings");
+const taxBracket = document.querySelector("#__calculator-response-tax-bracket");
 
-function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
+// converts numbers to currency
+function formatNumberToCurrency(amount, decimalCount = 0, decimal = ".", thousands = ",") {
   try {
     decimalCount = Math.abs(decimalCount);
     decimalCount = isNaN(decimalCount) ? 2 : decimalCount;
@@ -27,22 +30,43 @@ function formatMoney(amount, decimalCount = 0, decimal = ".", thousands = ",") {
         : "")
     );
   } catch (e) {
-    console.log(e);
+    console.error("Section 179 Calculator::formatNumberToCurrency::Error", e);
   }
 }
 
+// handles when range input is moved
 function handleRangeInput(e) {
   const value = e.target.value;
 
-  calculatorTopValue.textContent = `$${formatMoney(value)}`;
-  section179Deduction.textContent = `$${formatMoney(value)}`;
+  calculatorTopValue.textContent = `$${formatNumberToCurrency(value)}`;
+  calculatorTopValue.setAttribute("data-value", value);
+  section179Deduction.textContent = `$${formatNumberToCurrency(value)}`;
+  section179Deduction.setAttribute("data-value", value);
 
   const taxSavings = value * taxRateDropdown.value;
   const newCostOfEquipment = value - taxSavings;
   const newCashSavings = value - newCostOfEquipment;
 
-  costOfEquipment.textContent = `$${formatMoney(newCostOfEquipment)}`;
-  cashSavings.textContent = `$${formatMoney(newCashSavings)}`;
+  costOfEquipment.textContent = `$${formatNumberToCurrency(newCostOfEquipment)}`;
+  costOfEquipment.setAttribute("data-value", newCostOfEquipment);
+  cashSavings.textContent = `$${formatNumberToCurrency(newCashSavings)}`;
+  cashSavings.setAttribute("data-value", newCashSavings);
 }
 
+// handles when tax rated is changed
+function handleTaxRateChange(e) {
+  taxBracket.textContent = `At ${e.target.value * 100}% tax bracket`;
+
+  const calculatorTopValueData = calculatorTopValue.getAttribute("data-value");
+
+  const taxSavings = calculatorTopValueData * e.target.value;
+  const newCostOfEquipment = calculatorTopValueData - taxSavings;
+  const newCashSavings = calculatorTopValueData - newCostOfEquipment;
+
+  costOfEquipment.textContent = `$${formatNumberToCurrency(newCostOfEquipment)}`;
+  cashSavings.textContent = `$${formatNumberToCurrency(newCashSavings)}`;
+}
+
+// Defining the event listeners for user interaction
 slider.addEventListener("input", handleRangeInput);
+taxRateDropdown.addEventListener("change", handleTaxRateChange);
